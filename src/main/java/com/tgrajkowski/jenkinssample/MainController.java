@@ -10,6 +10,6 @@ public class MainController {
 
     @RequestMapping(value = "/logic")
     public String logic() {
-        return "Logic logic logic8";
+        return "Logic logic logic9";
     }
 }
