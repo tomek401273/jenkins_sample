@@ -4,10 +4,10 @@ stage('checkout') {
 }
 
 stage('checkout2') {
-sh label: '', script: 'docker build -t pipe/jenkins:2 .'
+sh label: '', script: 'docker build -t pipe/jenkins:3 .'
 }
 
 stage('checkout3') {
- sh label: '', script: 'docker run -d -p 1000:8080 pipe/jenkins:1'
+ sh label: '', script: 'docker run -d -p 1000:8080 pipe/jenkins:3'
 }
 }
