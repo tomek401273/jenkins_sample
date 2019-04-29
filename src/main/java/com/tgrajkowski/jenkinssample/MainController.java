@@ -11,6 +11,6 @@ public class MainController {
     @RequestMapping(value = "/logic")
     public String logic() {
 
-        return "Logic logic logic11";
+        return "Logic logic logic12";
     }
 }
