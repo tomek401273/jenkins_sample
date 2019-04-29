@@ -13,6 +13,7 @@ job("seed-my") {
     concurrentBuild(false)
 
     steps {
+        println("This script will not work without a properly set up docker environment. Please define the environment variable 'DOCKER_HOST'")
         shell("docker build -t tomek/jenkins:1 .")
         shell("docker run -d -p 1000:8080 tomek/jenkins:1")
     }
