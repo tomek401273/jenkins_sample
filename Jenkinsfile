@@ -4,7 +4,7 @@ stage('checkout') {
 }
 
 stage('checkout2') {
-sh label: '', script: 'docker build -t pipe/jenkins:1 .'
+sh label: '', script: 'docker build -t pipe/jenkins:2 .'
 }
 
 stage('checkout3') {
