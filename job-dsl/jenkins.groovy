@@ -19,7 +19,7 @@ job("seed-my") {
         runningDockers.each {id -> println("docker stop ${id}".execute().text)}
         println('end of message!!')
 
-        shell("docker build -t tomek/jenkins:1 .")
+        shell("docker build -t tomek/jenkins:2 .")
         shell("docker run -d -p 1000:8080 tomek/jenkins:1")
         println('end of script')
     }
