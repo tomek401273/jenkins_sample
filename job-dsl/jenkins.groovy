@@ -13,9 +13,14 @@ job("seed-my") {
     concurrentBuild(false)
 
     steps {
-            println("This script will not work without a properly set up docker environment. Please define the environment variable 'DOCKER_HOST'")
-            runningDockers = "docker ps -q".execute().text.split(/\n/)
-            runningDockers.each {id -> println("docker stop ${id}".execute().text)}
-            println('end of message!!')
+
+        println("This script will not work without a properly set up docker environment. Please define the environment variable 'DOCKER_HOST'")
+        runningDockers = "docker ps -q".execute().text.split(/\n/)
+        runningDockers.each {id -> println("docker stop ${id}".execute().text)}
+        println('end of message!!')
+
+        shell("docker build -t tomek/jenkins:1 .")
+        shell("docker run -d -p 1000:8080 tomek/jenkins:1")
+        println('end of script')
     }
 }
