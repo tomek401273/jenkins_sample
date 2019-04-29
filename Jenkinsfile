@@ -13,7 +13,7 @@ stage('checkout3') {
 
 stage('checkout4') {
     def ubuntu = docker.image('ubuntu:18.04')
-    ubuntu.run()
+    ubuntu.run("tail -f /dev/null")
     ubuntu.inside {
     sh 'touch lubie-placki-123.txt'
     }
