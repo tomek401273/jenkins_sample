@@ -12,8 +12,7 @@ stage('checkout3') {
 }
 
 stage('checkout4') {
-    def ubuntu = docker.image('ubuntu:18.04')
-    ubuntu.run("tail -f /dev/null")
+    def ubuntu = docker.image('rabbitmq:3.7.6-management')
     ubuntu.inside {
     sh 'touch lubie-placki-123.txt'
     }
