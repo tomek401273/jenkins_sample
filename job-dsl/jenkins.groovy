@@ -1,21 +1,19 @@
-pipelineJob("simple-pipeline") {
+job("seed-my") {
     description()
     keepDependencies(false)
-    definition {
-        cpsScm {
-            """node('master') {
-stage('checkout') {
- git 'https://github.com/tomek401273/jenkins_sample'
-}
-
-stage('checkout2') {
-sh label: '', script: 'docker build -t tomek/jenkins:1 .'
-}
-
-stage('checkout3') {
- sh label: '', script: 'docker run -d -p 1000:8080 tomek/jenkins:1'
-}
-}"""		}
+    scm {
+        git {
+            remote {
+                github("tomek401273/jenkins_sample", "https")
+            }
+            branch("*/master")
+        }
     }
     disabled(false)
+    concurrentBuild(false)
+
+    steps {
+        shell("docker build -t tomek/jenkins:1 .")
+        shell("docker run -d -p 1000:8080 tomek/jenkins:1")
+    }
 }
