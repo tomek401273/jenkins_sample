@@ -14,13 +14,13 @@ stage('checkout') {
      println(commit_id);
    }
 
-
+def app
 stage('checkout2') {
-sh label: '', script: 'docker build -t pipe/jenkins:${commit_id} .'
+ app = docker.build("pipe/jenkins:${commit_id}", '.')
 }
 
 stage('checkout3') {
- sh label: '', script: 'docker run -d -p 1000:8080 pipe/jenkins:${commit_id}'
+ app.run()
 }
 
 stage('checkout4') {
