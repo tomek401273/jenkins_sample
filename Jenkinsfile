@@ -16,11 +16,11 @@ stage('checkout') {
 
 
 stage('checkout2') {
-sh label: '', script: 'docker build -t pipe/jenkins:4 .'
+sh label: '', script: 'docker build -t pipe/jenkins:${commit_id} .'
 }
 
 stage('checkout3') {
- sh label: '', script: 'docker run -d -p 1000:8080 pipe/jenkins:4'
+ sh label: '', script: 'docker run -d -p 1000:8080 pipe/jenkins:${commit_id}'
 }
 
 stage('checkout4') {
